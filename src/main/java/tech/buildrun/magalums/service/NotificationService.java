@@ -5,6 +5,7 @@ import tech.buildrun.magalums.entity.Notification;
 import tech.buildrun.magalums.entity.Status;
 import tech.buildrun.magalums.repository.NotificationRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
@@ -26,12 +27,24 @@ public class NotificationService {
         return notificationRepository.findById(notificationId);
     }
 
+    public List<Notification> findAll() {
+        return notificationRepository.findAll();
+    }
+
     public void cancelNotification(Long notificationId) {
         var notification = findById(notificationId);
-
-        if (notification.isPresent()) {
-            notification.get().setStatus(Status.Values.CANCELED.toStatus());
-            notificationRepository.save(notification.get());
-        }
+        notification.ifPresent(n -> {
+            n.setStatus(Status.Values.CANCELED.toStatus());
+            notificationRepository.save(n);
+        });
     }
+
+    // public void cancelNotification(Long notificationId) {
+    // var notification = findById(notificationId);
+
+    // if (notification.isPresent()) {
+    // notification.get().setStatus(Status.Values.CANCELED.toStatus());
+    // notificationRepository.save(notification.get());
+    // }
+    // }
 }

@@ -1,5 +1,7 @@
 package tech.buildrun.magalums.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,6 +41,12 @@ public class NotificationController {
         }
 
         return ResponseEntity.ok(notification.get());
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Notification>> getAllNotifications() {
+        List<Notification> notifications = notificationService.findAll();
+        return ResponseEntity.ok(notifications);
     }
 
     @DeleteMapping("/{notificationId}")
