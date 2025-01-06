@@ -1,9 +1,12 @@
 package tech.buildrun.magalums.service;
 
-import org.springframework.stereotype.Service;
-
 import tech.buildrun.magalums.controller.dto.ScheduleNotificationDto;
+import tech.buildrun.magalums.entity.Notification;
 import tech.buildrun.magalums.repository.NotificationRepository;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
 
 @Service
 public class NotificationService {
@@ -16,5 +19,9 @@ public class NotificationService {
 
     public void scheduleNotification(ScheduleNotificationDto dto) {
         notificationRepository.save(dto.toNotification());
+    }
+
+    public Optional<Notification> findById(Long notificationId) {
+        return notificationRepository.findById(notificationId);
     }
 }
