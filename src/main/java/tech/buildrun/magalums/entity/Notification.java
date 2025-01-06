@@ -20,7 +20,7 @@ public class Notification {
 
     private LocalDateTime dateTime;
 
-    private String destinatario;
+    private String destination;
 
     private String message;
 
@@ -36,9 +36,9 @@ public class Notification {
 
     }
 
-    public Notification(LocalDateTime dateTime, String destinatario, String message, Channel channel, Status status) {
+    public Notification(LocalDateTime dateTime, String destination, String message, Channel channel, Status status) {
         this.dateTime = dateTime;
-        this.destinatario = destinatario;
+        this.destination = destination;
         this.message = message;
         this.channel = channel;
         this.status = status;
@@ -60,12 +60,12 @@ public class Notification {
         this.dateTime = dateTime;
     }
 
-    public String getDestinatario() {
-        return destinatario;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setDestinatario(String destinatario) {
-        this.destinatario = destinatario;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public String getMessage() {
